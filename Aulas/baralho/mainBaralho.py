@@ -1,4 +1,11 @@
 from Baralho import Baralho
+from Carta import Carta
+
+c = Carta('2','espada','vermelho')
+c.valor = 'rei'
+print(c)
+
+input()
 
 def embaralhar():
     print('função embaralhar()')
@@ -30,3 +37,7 @@ baralho.juntarBaralho(baralho2)
 print(baralho)
 print(len(baralho))
 print(len(baralho2))
+# input()
+# alunos = {10:'Lucas',11:'Luis',12:'Yago'}
+# baralho.container.append(alunos)
+# print(baralho)

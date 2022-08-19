@@ -5,6 +5,18 @@ class Carta:
         self.__valor = valor
         self.__cor = cor
 
+    #definindo um método acessor na sintaxe de python
+    @property
+    def valor(self):
+        return self.__valor
+
+    #definindo um método modificador na sintaxe de python
+    ''''
+    @valor.setter
+    def valor(self, novoValor):
+        self.__valor = novoValor
+    '''
+
     def getValor(self):
         return self.__valor
 
