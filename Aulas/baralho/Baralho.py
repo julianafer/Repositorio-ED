@@ -1,7 +1,7 @@
 from Carta import Carta
 import random
 class Baralho:
-    def __init__(self):
+    def __init__(self, embaralhar:bool = False):
         self.container = list()
         naipe = ['ouro','espada','copa','paus']
         cor = ['vermelho','preto','vermelho','preto']
@@ -10,6 +10,9 @@ class Baralho:
         for n in range(len(naipe)):
             for v in range(len(valor)):
                 self.container.append(Carta(valor[v],naipe[n],cor[n]))
+
+        if embaralhar:
+            self.embaralhar()
 
     def __str__(self):
         s = ''
@@ -22,3 +25,25 @@ class Baralho:
 
     def embaralhar(self):
         random.shuffle(self.container)
+
+    def retirarCarta(self)->Carta:
+        return self.container.pop()
+
+    def temCarta(self)->bool:
+        if len(self.container)==0:
+            return False
+        else:
+            return True
+
+    def receberCarta(self, carta:Carta)->bool:
+        if carta not in self.container:
+            self.container.append(carta)
+            return True
+        else:
+            return False
+
+    def juntarBaralho(self, outroBaralho):
+        for i in range(len(outroBaralho)):
+            carta_retirada = outroBaralho.retirarCarta()
+            if not self.receberCarta(carta_retirada):
+                outroBaralho.receberCarta(carta_retirada)
