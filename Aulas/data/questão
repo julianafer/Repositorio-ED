@@ -1,0 +1,6 @@
+1. Implemente uma classe chamada Data, que poderá ser usada para representar uma data.
+A classe deverá ter:
+a) os atributos privados: dia, mês e ano, do tipo int.;
+b) Construtor;
+c) Métodos acessadores e modificadores;
+d) Método __str__(self), que devera retornar a data no formato dd/mm/aaaa (String).
