@@ -31,6 +31,10 @@ while(True):
         print('\nDeu erro')
         print('Exceção responsável:', e.__class__.__name__)
         print('Mensagem da exceção:', e)
+
+    #o finally tem que ficar por último
+    finally: 
+        print('Se ocorrer except ou não, eu entro aqui')
     
     print('Valeu, vamos à próxima interação.')
 
