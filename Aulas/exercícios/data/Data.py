@@ -3,41 +3,35 @@ class Data:
         self.__dia = dia
         self.__mes = None
         self.__ano = ano
-        self.__validaMes(mes)
-
-
-    def __validaMes(self, mes):
-        if self.__mes>=1 and self.__mes<=12:
-            self.__mes = mes
+        self.__limite = {1:31, 2:28, 3:31, 4:30, 5:31, 6:30, 7:31, 8:31, 9:30, 10:31, 11:30, 12:31}
 
 
     @property
     def dia(self)->int:
         return self.__dia
 
-    @dia.setter
-    def dia(self, novoDia):
-        self.__dia = novoDia
-
     @property
     def mes(self)->int:
-        if self.__mes>=1 and self.__mes<=12:
-            return self.__mes
-
-    @mes.setter
-    def mes(self, novoMes):
-        if novoMes>=1 and novoMes<=12:
-            self.__mes = novoMes
+        return self.__mes
 
     @property
     def ano(self)->int:
         return self.__ano
 
+    @dia.setter
+    def dia(self, dia):
+        assert dia <= self.__limite[self.__mes], f'Dia inválido'
+        self.__dia = dia
+
+    @mes.setter
+    def mes(self, mes):
+        assert mes > 0 and mes < 13, f'Mês {mes} é inválido'
+        self.__mes = mes
+
     @ano.setter
-    def ano(self, novoAno):
-        self.__ano = novoAno
+    def ano(self, ano:int):
+        assert ano > 0, f'{ano} é um ano inválido'
+        self.__ano = ano
 
     def __str__(self):
         return f'{self.__dia:02}/{self.__mes:02}/{self.__ano}'
-
-    
