@@ -1,7 +1,7 @@
 from Data import Data
 
-d1 = Data(28, 8, 2022)
-print(d1)
-d1.mes = 400
-print(d1)
+nome = input('Digite seu Nome:')
+print(nome)
 
+d3 = Data(1,1,2022)
+print(d3)
