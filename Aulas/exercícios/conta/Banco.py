@@ -7,18 +7,37 @@ class OperacaoInvalidaException(Exception):
 
 class Banco:
     def __init__(self):
-        self.__contas = list()
+        self.__contas = dict() #dicionário
         self.__saldoTotal = 0
 
-    def sacar(self, numero:int, quantia:float)->bool:
-        pass
+    def sacar(self, numero:int, quantia:float):
+        try:
+            assert quantia > 0
+            # obter o objeto correspondente à conta
+            conta = self.__contas[numero]
+            if conta.saldo - quantia >= 0:
+                conta.saldo -= quantia
+            else:
+                raise OperacaoInvalidaException(f' Conta {numero}: Saldo insuficiente para saque')
+        except AssertionError:
+            raise OperacaoInvalidaException('Quantia a retirar não pode ser negativa')
+        except KeyError:
+            raise OperacaoInvalidaException(f'Conta {numero} não está cadastrada')
 
     def depositar(self, numero:int, quantia:float):
         pass
 
     def addConta(self, numero:int, titular:str):
-        self.__contas[numero] = Conta(numero,titular)
-        # for conta in self.__contas:
-        #     if conta.numero == numero:
-        #         raise OperacaoInvalidaException('Conta de numero {numero} já está cadastrada')
-        # self.__contas.append(Conta(numero, titular))
+        if numero not in self.__contas.keys():
+            self.__contas[numero] = Conta(numero,titular)
+        else:
+            raise OperacaoInvalidaException(f'Conta de numero {numero} já está cadastrada')
+
+    
+    def __str__(self):
+        s = ''
+        cont = 1
+        for key in self.__contas.keys():
+            s+= f'{cont:02}: {key}, titular {self.__contas[key].titular}, saldo =  {self.__contas[key].saldo}\n'
+            cont += 1
+        return s

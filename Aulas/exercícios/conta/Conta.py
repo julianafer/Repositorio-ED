@@ -1,8 +1,8 @@
 class Conta:
-    def __init__(self, numero:int, titular):
+    def __init__(self, numero:int, titular:str):
         self.__numero = numero
         self.__titular = titular
-        self.__saldo = 0.0
+        self.__saldo = 100.00
 
     @property
     def numero(self):
@@ -30,4 +30,4 @@ class Conta:
         self.__saldo = novoSaldo
 
     def __str__(self):
-        return f'conta {self.__numeor}, titular: {self.__titular}, saldo: {self.__saldo}'
+        return f'conta {self.__numero}, titular: {self.__titular}, saldo = {self.__saldo:5.2f}'

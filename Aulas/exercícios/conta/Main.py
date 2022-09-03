@@ -1,4 +1,19 @@
 from Conta import Conta
+from Banco import *
 
-c1 = Conta(123, 'Alex')
-print(c1)
+try:
+    bco = Banco()
+    bco.addConta(123, 'Alex')
+    bco.addConta(456, 'Clodoaldo')
+    bco.addConta(457, 'Yago')
+    bco.addConta(458, 'Márcio')
+    bco.addConta(120, 'Caio')
+    bco.addConta(121, 'Felipe')
+
+    bco.sacar(456,10.00)
+    
+
+except OperacaoInvalidaException as oie:
+    print(oie)
+
+print(bco)
