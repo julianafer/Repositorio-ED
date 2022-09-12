@@ -38,15 +38,17 @@ class FilaSequencial:
 if __name__ == '__main__':
     f = FilaSequencial()
 
-    # for i in range(1,6):
-    #     f.inserir(i * 10)
+    for i in range(1,6):
+        f.inserir(i * 10)
 
-    # print(f)
-    # f.remover()
-    # print(f)
-    
-    try:
-        f.remover()
-    except FilaException as fe:
-        print(fe)
     print(f)
+    f.remover()
+    print(f)
+    f.remover()
+    print(f)
+    
+    # try:
+    #     f.remover()
+    # except FilaException as fe:
+    #     print(fe)
+    # print(f)
