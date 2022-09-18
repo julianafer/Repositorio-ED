@@ -44,10 +44,22 @@ class Fila:
             raise FilaException(f'Posicao inválida para a fila atual com {self.__ocupados} elementos')
 
     def enfileira(self, conteudo:any):
-        novo = No(conteudo)
+        '''novo = No(conteudo)
         self.__head.final.prox = novo
         self.__head.final = novo
-        self.__head.tamanho += 1
+        self.__head.tamanho += 1'''
+
+        novo = No(conteudo)
+
+        if self.estaVazia():
+            self.__head.inicio = novo
+            self.__head.final = novo
+            self.__head.tamanho += 1
+        else:
+            self.__head.final.prox = novo
+            self.__head.final = novo
+            self.__head.tamanho += 1
+
 
     def busca(self, chave:any)->int:
         inicio = self.__frente
