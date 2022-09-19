@@ -42,10 +42,20 @@ class Pilha:
         return self.__dados.pop()
 
     def __str__(self):
-        s = ''
+        s = '['
         for e in self.__dados:
             s+=f'{e} '
+        s += '] <- topo'
         return s
 
     def esvazia(self):
         self.__dados.clear()
+
+    def concatena(self, outraPilha:'Pilha'):
+        #inverter a pilha "outraPilha"
+        p_aux = Pilha()
+        while (not outraPilha.estaVazia()):
+            p_aux.empilha(outraPilha.desempilha())
+        #descarregando p_aux na pilha que recebeu a chamada
+        while (not p_aux.estaVazia()):
+            self.empilha(p_aux.desempilha())
