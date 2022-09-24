@@ -12,7 +12,8 @@ class Pilha:
         return len(self.__dados)
 
     def elementoTopo(self):
-        return self.__dados[len(self.__dados)]
+        index = self.tamanho() - 1
+        return f'{self.__dados[index]}'
 
     def estaVazia(self):
         return len(self.__dados)==0

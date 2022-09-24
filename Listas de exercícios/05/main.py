@@ -17,7 +17,7 @@ while True:
     print('Editor de Pilha v1.2')
     print('=====================================')
     print(f'Pilha Selecionada: {pilhaSelecionada} de {numeroPilhas}')
-    print(f'{pilhas[pilhaSelecionada]} <- topo')
+    print(f'{pilhas[pilhaSelecionada-1]} <- topo')
     print('=====================================')
     print('(e) Empilhar')
     print('(d) Desempilhar')
@@ -36,29 +36,32 @@ while True:
 
     if opcao == 'e':
         dado = int(input('Dado: '))
-        pilhas[pilhaSelecionada].empilhar(dado)
+        pilhas[pilhaSelecionada-1].empilhar(dado)
 
     elif opcao == 'd':
-        pilhas[pilhaSelecionada].desempilhar()
+        pilhas[pilhaSelecionada-1].desempilhar()
     
-    elif opcao == 't': #não tá pegando
-        pilhas[pilhaSelecionada].tamanho()
+    elif opcao == 't':
+        print('Tamanho:', pilhas[pilhaSelecionada-1].tamanho())
 
     elif opcao == 'o':
-        pilhas[pilhaSelecionada].elementoTopo()
+        print('Topo:', pilhas[pilhaSelecionada-1].elementoTopo())
 
     elif opcao == 'v':
-        pilhas[pilhaSelecionada].estaVazia()
+        if pilhas[pilhaSelecionada-1].estaVazia():
+            print('Sim')
+        else:
+            print('Não')
 
     elif opcao == 'r':
         numeroPilhas += 1
-        pilhas[numeroPilhas] = Pilha()
+        pilhas.append(Pilha())
 
     elif opcao == 'n':
         pass
 
     elif opcao == 'z':
-        pilhas[pilhaSelecionada].esvaziar()
+        pilhas[pilhaSelecionada-1].esvaziar()
 
     elif opcao == 'c':
         pass
@@ -71,3 +74,5 @@ while True:
 
     else:
         break
+
+    print()
