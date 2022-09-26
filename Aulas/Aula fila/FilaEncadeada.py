@@ -6,7 +6,7 @@ class FilaException(Exception):
 class NoCabeca:
     def __init__(self):
         self.inicio = None
-        self.final  = None
+        self.final = None
         self.tamanho = 0
 
 class No:

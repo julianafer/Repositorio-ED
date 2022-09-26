@@ -1,3 +1,7 @@
+class PilhaException(Exception):
+  def __init__(self, msg) -> None:
+    super().__init__(msg)
+
 
 class No:
   def __init__(self, carga:int):
@@ -13,17 +17,25 @@ class Pilha:
     self.__topo = None
     self.__tamanho = 0
 
+  def estaVazia(self):
+    return self.__tamanho == 0
+
+  def tamanho(self):
+    return self.__tamanho
+
   def empilhar(self, conteudo):
     novo = No(conteudo)
-    novo.ant = self.__topo
-    self.__topo = novo
+    novo.ant = self.__topo #o anterior do novo nó vai ser o atual topo
+    self.__topo = novo #agora o novo nó que vai ser o topo
     self.__tamanho += 1
 
   def desempilhar(self):
-    carga = self.__topo.ant
+    if self.estaVazia():
+      raise PilhaException('Impossível desempilhar de uma piolha vazia')
+    pop = self.__topo.ant
     self.__topo = self.__topo.ant
     self.__tamanho -= 1
-    return carga
+    return pop
 
   def __str__(self):
     s = 'topo -> [ '
@@ -37,13 +49,17 @@ class Pilha:
 
 if __name__ == '__main__':
 
-  p1 = Pilha()
-  for i in range(1,10):
-    p1.empilhar(i*10)
-  print(p1)
-  p1.desempilhar()
-  p1.desempilhar()
-  print(p1)
+  try:
+    p1 = Pilha()
+    for i in range(1,10):
+      p1.empilhar(i*10)
+    print(p1)
+    p1.desempilhar()
+    p1.desempilhar()
+    print(p1)
+  except PilhaException as pe:
+    print(pe)
+
 
 '''
 p1 = 1 4 8 2

@@ -16,7 +16,7 @@ class Fila:
             self.remover()
 
     def __str__(self) -> str:
-        return f'{self.__dados} <- topo'
+        return f'remove -> {self.__dados} <- adiciona'
 
 
 if __name__ == '__main__':
@@ -28,6 +28,8 @@ if __name__ == '__main__':
     f1.remover()
     print(f1)
     f1.remover()
+    print(f1)
+    f1.inserir(100)
     print(f1)
     f1.esvaziar()
     print(f1)

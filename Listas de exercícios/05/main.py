@@ -2,7 +2,7 @@ from Pilha import *
 from binario import binario
 
 numeroPilhas = int(input('Número de pilhas: '))
-pilhaSelecionada = int(input('Pilha Selecionada: '))
+pilhaSelecionada = int(input('Pilha Selecionada: ')) - 1
 print()
 
 pilhas = [0]*numeroPilhas
@@ -18,7 +18,7 @@ while True:
     print(f'''Editor de Pilha v1.2
 =====================================
 Pilha Selecionada: {pilhaSelecionada} de {numeroPilhas}
-{pilhas[pilhaSelecionada-1]} <- topo
+{pilhas[pilhaSelecionada+1]} <- topo
 =====================================
 (e) Empilhar
 (d) Desempilhar
@@ -37,22 +37,22 @@ Pilha Selecionada: {pilhaSelecionada} de {numeroPilhas}
 
     if opcao == 'e':
         dado = int(input('Dado: '))
-        pilhas[pilhaSelecionada-1].empilhar(dado)
+        pilhas[pilhaSelecionada].empilhar(dado)
 
     elif opcao == 'd':
         try:
-            assert pilhas[pilhaSelecionada-1].desempilhar()
+            assert pilhas[pilhaSelecionada].desempilhar()
         except:
             raise PilhaException('A pilha está vazia!')
     
     elif opcao == 't':
-        print('Tamanho:', pilhas[pilhaSelecionada-1].tamanho())
+        print('Tamanho:', pilhas[pilhaSelecionada].tamanho())
 
     elif opcao == 'o':
-        print('Topo:', pilhas[pilhaSelecionada-1].elementoTopo())
+        print('Topo:', pilhas[pilhaSelecionada].elementoTopo())
 
     elif opcao == 'v':
-        if pilhas[pilhaSelecionada-1].estaVazia():
+        if pilhas[pilhaSelecionada].estaVazia():
             print('Sim')
         else:
             print('Não')
@@ -62,15 +62,15 @@ Pilha Selecionada: {pilhaSelecionada} de {numeroPilhas}
         pilhas.empilhar(Pilha())
 
     elif opcao == 'n':
-        pilhas[pilhaSelecionada-1].inverter()
+        pilhas[pilhaSelecionada].inverter()
 
     elif opcao == 'z':
-        pilhas[pilhaSelecionada-1].esvaziar()
+        pilhas[pilhaSelecionada].esvaziar()
 
     elif opcao == 'c':
         index = int(input('Deseja concatenar com qual pilha? ')) - 1
         outraPilha = pilhas[index]
-        pilhas[pilhaSelecionada-1].concatenar(outraPilha)
+        pilhas[pilhaSelecionada].concatenar(outraPilha)
 
     elif opcao == 'm':
         pilhaSelecionada = int(input('Nova pilha: '))
