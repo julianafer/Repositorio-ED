@@ -18,3 +18,13 @@ A remoção de qualquer nó deve garantir a propriedade de ordenção da árvore
 
 * O nó a ser excluído **contém dois filhos**
     * O filho mais a esquerda, a partir da raiz da subárvore direita, é copiado para o nó alvo
+
+
+# Calculando a Altura:
+```
+def altura (self, no) -> int:
+    if no is None:
+        return 0
+    else:
+        return 1 + max(altura(no.esq), altura(no.dir))
+```
