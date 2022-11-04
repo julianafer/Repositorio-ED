@@ -1,9 +1,11 @@
 # Faça uma função recursiva chamada printInverse() que imprima uma string ao contrário
 
 def printInverse(string = ''):
-    # if string == '':
-    #     return ''
-    # return (f'{string[-1]}{printInverse(string[:-1])}')
-    return '' if string == '' else f'{string[-1]}{printInverse(string[:-1])}'
+    if string == '':
+        return ''
+    else:
+        # não sei como funciona, só sei que funciona
+        printInverse(string[1:])
+        print(f'{string[0]}',end='')
 
-print(printInverse('socorram me subi no onibus em marrocos'))
+printInverse('salve')
