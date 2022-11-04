@@ -7,7 +7,7 @@ def func1(n):
     else:
         return (n % 10 + func1(int(n/10)))
 
-print(func1(35))
+print(func1(135))
 
 # O que vai ser impresso no print(func(35))?
 # 8
@@ -41,6 +41,14 @@ def func2(n):
         return x + n
 print(func2(35))
 '''
+# solução certa :)
+def func2(n):
+    x = 0
+    while n != 0: #← while inútil??
+        x += n % 10
+        n = int (n / 10)
+    return x
+print(func2(135))
 
 # Quantas chamadas recursivas serão realizadas?
 # Como deu pra ver na questão 1, serão 2 chamadas recursivas porque a primeira chamada é uma chamada normal :)
